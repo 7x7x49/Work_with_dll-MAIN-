@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form2));
+            this.buttonBegin = new System.Windows.Forms.Button();
+            this.buttonExit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,35 +40,39 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.tbMinX = new System.Windows.Forms.TextBox();
+            this.tbMaxX = new System.Windows.Forms.TextBox();
+            this.tbNN = new System.Windows.Forms.TextBox();
+            this.tbCountStream = new System.Windows.Forms.TextBox();
+            this.tbMaxY = new System.Windows.Forms.TextBox();
+            this.tbMinY = new System.Windows.Forms.TextBox();
+            this.labelBegin = new System.Windows.Forms.Label();
+            this.labelEnd = new System.Windows.Forms.Label();
+            this.labelTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // buttonBegin
             // 
-            this.button1.Location = new System.Drawing.Point(139, 270);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 43);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Начать";
-            this.button1.UseVisualStyleBackColor = true;
+            this.buttonBegin.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonBegin.Location = new System.Drawing.Point(139, 270);
+            this.buttonBegin.Name = "buttonBegin";
+            this.buttonBegin.Size = new System.Drawing.Size(160, 43);
+            this.buttonBegin.TabIndex = 0;
+            this.buttonBegin.Text = "Начать";
+            this.buttonBegin.UseVisualStyleBackColor = false;
+            this.buttonBegin.Click += new System.EventHandler(this.buttonBegin_Click);
             // 
-            // button2
+            // buttonExit
             // 
-            this.button2.Location = new System.Drawing.Point(861, 270);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 43);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Закрыть";
-            this.button2.UseVisualStyleBackColor = true;
+            this.buttonExit.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.buttonExit.Location = new System.Drawing.Point(861, 270);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(160, 43);
+            this.buttonExit.TabIndex = 1;
+            this.buttonExit.Text = "Закрыть";
+            this.buttonExit.UseVisualStyleBackColor = false;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
             // label1
             // 
@@ -159,101 +164,102 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "Продолжительность";
             // 
-            // progressBar1
+            // progressBar
             // 
-            this.progressBar1.Location = new System.Drawing.Point(720, 158);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(409, 23);
-            this.progressBar1.TabIndex = 11;
+            this.progressBar.Location = new System.Drawing.Point(720, 158);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(409, 23);
+            this.progressBar.TabIndex = 11;
             // 
-            // textBox1
+            // tbMinX
             // 
-            this.textBox1.Location = new System.Drawing.Point(52, 64);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(142, 22);
-            this.textBox1.TabIndex = 12;
+            this.tbMinX.Location = new System.Drawing.Point(52, 64);
+            this.tbMinX.Name = "tbMinX";
+            this.tbMinX.Size = new System.Drawing.Size(142, 22);
+            this.tbMinX.TabIndex = 12;
             // 
-            // textBox2
+            // tbMaxX
             // 
-            this.textBox2.Location = new System.Drawing.Point(263, 64);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(142, 22);
-            this.textBox2.TabIndex = 13;
+            this.tbMaxX.Location = new System.Drawing.Point(263, 64);
+            this.tbMaxX.Name = "tbMaxX";
+            this.tbMaxX.Size = new System.Drawing.Size(142, 22);
+            this.tbMaxX.TabIndex = 13;
             // 
-            // textBox3
+            // tbNN
             // 
-            this.textBox3.Location = new System.Drawing.Point(476, 64);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(142, 22);
-            this.textBox3.TabIndex = 14;
+            this.tbNN.Location = new System.Drawing.Point(476, 64);
+            this.tbNN.Name = "tbNN";
+            this.tbNN.Size = new System.Drawing.Size(142, 22);
+            this.tbNN.TabIndex = 14;
             // 
-            // textBox4
+            // tbCountStream
             // 
-            this.textBox4.Location = new System.Drawing.Point(475, 158);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(142, 22);
-            this.textBox4.TabIndex = 15;
+            this.tbCountStream.Location = new System.Drawing.Point(475, 158);
+            this.tbCountStream.Name = "tbCountStream";
+            this.tbCountStream.Size = new System.Drawing.Size(142, 22);
+            this.tbCountStream.TabIndex = 15;
             // 
-            // textBox5
+            // tbMaxY
             // 
-            this.textBox5.Location = new System.Drawing.Point(263, 159);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(142, 22);
-            this.textBox5.TabIndex = 16;
+            this.tbMaxY.Location = new System.Drawing.Point(263, 159);
+            this.tbMaxY.Name = "tbMaxY";
+            this.tbMaxY.Size = new System.Drawing.Size(142, 22);
+            this.tbMaxY.TabIndex = 16;
             // 
-            // textBox6
+            // tbMinY
             // 
-            this.textBox6.Location = new System.Drawing.Point(52, 159);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(142, 22);
-            this.textBox6.TabIndex = 17;
+            this.tbMinY.Location = new System.Drawing.Point(52, 159);
+            this.tbMinY.Name = "tbMinY";
+            this.tbMinY.Size = new System.Drawing.Size(142, 22);
+            this.tbMinY.TabIndex = 17;
             // 
-            // label10
+            // labelBegin
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Sitka Text", 9F);
-            this.label10.Location = new System.Drawing.Point(728, 65);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(40, 21);
-            this.label10.TabIndex = 18;
-            this.label10.Text = "000";
+            this.labelBegin.AutoSize = true;
+            this.labelBegin.Font = new System.Drawing.Font("Sitka Text", 9F);
+            this.labelBegin.Location = new System.Drawing.Point(728, 65);
+            this.labelBegin.Name = "labelBegin";
+            this.labelBegin.Size = new System.Drawing.Size(40, 21);
+            this.labelBegin.TabIndex = 18;
+            this.labelBegin.Text = "000";
             // 
-            // label11
+            // labelEnd
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Sitka Text", 9F);
-            this.label11.Location = new System.Drawing.Point(847, 65);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 21);
-            this.label11.TabIndex = 19;
-            this.label11.Text = "000";
+            this.labelEnd.AutoSize = true;
+            this.labelEnd.Font = new System.Drawing.Font("Sitka Text", 9F);
+            this.labelEnd.Location = new System.Drawing.Point(847, 65);
+            this.labelEnd.Name = "labelEnd";
+            this.labelEnd.Size = new System.Drawing.Size(40, 21);
+            this.labelEnd.TabIndex = 19;
+            this.labelEnd.Text = "000";
             // 
-            // label12
+            // labelTime
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Sitka Text", 9F);
-            this.label12.Location = new System.Drawing.Point(1023, 65);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(40, 21);
-            this.label12.TabIndex = 20;
-            this.label12.Text = "000";
+            this.labelTime.AutoSize = true;
+            this.labelTime.Font = new System.Drawing.Font("Sitka Text", 9F);
+            this.labelTime.Location = new System.Drawing.Point(1023, 65);
+            this.labelTime.Name = "labelTime";
+            this.labelTime.Size = new System.Drawing.Size(40, 21);
+            this.labelTime.TabIndex = 20;
+            this.labelTime.Text = "000";
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(1195, 354);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.progressBar1);
+            this.Controls.Add(this.labelTime);
+            this.Controls.Add(this.labelEnd);
+            this.Controls.Add(this.labelBegin);
+            this.Controls.Add(this.tbMinY);
+            this.Controls.Add(this.tbMaxY);
+            this.Controls.Add(this.tbCountStream);
+            this.Controls.Add(this.tbNN);
+            this.Controls.Add(this.tbMaxX);
+            this.Controls.Add(this.tbMinX);
+            this.Controls.Add(this.progressBar);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -263,10 +269,11 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.buttonExit);
+            this.Controls.Add(this.buttonBegin);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form2";
-            this.Text = "Новое окно";
+            this.Text = "z = e^x · √(1 − e^{2x}) + arcsin(y)";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -274,8 +281,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button buttonBegin;
+        private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
@@ -285,15 +292,15 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.TextBox tbMinX;
+        private System.Windows.Forms.TextBox tbMaxX;
+        private System.Windows.Forms.TextBox tbNN;
+        private System.Windows.Forms.TextBox tbCountStream;
+        private System.Windows.Forms.TextBox tbMaxY;
+        private System.Windows.Forms.TextBox tbMinY;
+        private System.Windows.Forms.Label labelBegin;
+        private System.Windows.Forms.Label labelEnd;
+        private System.Windows.Forms.Label labelTime;
     }
 }

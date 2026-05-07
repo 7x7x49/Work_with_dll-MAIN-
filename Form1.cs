@@ -19,20 +19,24 @@ namespace LB1
             if (openFileDialog1.ShowDialog() == DialogResult.OK) // Если нажата кнопка ОК на диалоговой панели
             {
                 richTextBox1.Clear(); // Очистка richTextBox1 перед загрузкой нового файла
+
+                // Используем переменные из Form2
                 fr2.FileN = openFileDialog1.FileName; // Извлечение имени файла данных в Form2
                 fr2.FileE = openFileDialog1.FileName.Substring(openFileDialog1.FileName.Length - 3, 3); // Извлечение расширения файла данных
+
                 if ((fr2.FileE == "rtf") | (fr2.FileE == "Rtf") | (fr2.FileE == "RTF")) // Если расширение rtf
                 {
                     richTextBox1.LoadFile(fr2.FileN); // Загрузка данных в richTextBox1
                 }
                 if ((fr2.FileE == "txt") | (fr2.FileE == "Txt") | (fr2.FileE == "TXT")) // Если расширение txt
                 {
+                    // Используем StRead из Form2
                     fr2.StRead = new StreamReader(fr2.FileN, Encoding.Default);
                     while ((fr2.LineS = fr2.StRead.ReadLine()) != null) // Цикл до конца файла
                     {
                         richTextBox1.Text = richTextBox1.Text + fr2.LineS + "\n"; // Загрузка строки в richTextBox1
                     }
-                    fr2.StRead.Close();
+                    fr2.StRead.Close(); // Закрытие потока ввода
                 }
             }
         }
@@ -49,9 +53,10 @@ namespace LB1
                         fr2.FileN = saveFileDialog1.FileName; // Извлечение имени файла данных
                         richTextBox1.SaveFile(fr2.FileN); // Загрузка данных из richTextBox1 в файл
                     }
-                    if (saveFileDialog1.FilterIndex == 2) // Если  расширение txt
+                    if (saveFileDialog1.FilterIndex == 2) // Если расширение txt
                     {
                         fr2.FileN = saveFileDialog1.FileName; // Извлечение имени файла данных
+                        // Используем StWrit из Form2
                         fr2.StWrit = new StreamWriter(fr2.FileN, false, Encoding.Default); // Открытие потока StWrit для вывода
                         fr2.I = 0; // Обнуление счётчика строк
                         while (fr2.I < richTextBox1.Lines.Length) // Цикл до тех пор пока не кончились строки в richTextBox1
@@ -71,6 +76,7 @@ namespace LB1
                 }
                 if ((fr2.FileE == "txt") || (fr2.FileE == "Txt") || (fr2.FileE == "TXT")) // Если расширение txt
                 {
+                    // Используем StWrit из Form2
                     fr2.StWrit = new StreamWriter(fr2.FileN, false, Encoding.Default); // Открытие потока StWrit для вывода
                     fr2.I = 0; // Обнуление счётчика строк
                     while (fr2.I < richTextBox1.Lines.Length) // Цикл до тех пор пока не кончились строки в richTextBox1
@@ -85,7 +91,7 @@ namespace LB1
 
         private void ProcessDataProcedure() // Процедура обработки данных
         {
-
+            // Обработка данных для текстового редактора (ЛР1)
         }
 
         private void SaveAsProcedure() // Процедура сохранитьКак
@@ -101,6 +107,7 @@ namespace LB1
                 if (saveFileDialog1.FilterIndex == 2) // Если расширение txt
                 {
                     fr2.FileN = saveFileDialog1.FileName; // Извлечение имени файла данных
+                    // Используем StWrit из Form2
                     fr2.StWrit = new StreamWriter(fr2.FileN, false, Encoding.Default); // Открытие потока StWrit для вывода
                     fr2.I = 0; // Обнуление счётчика строк
                     while (fr2.I < richTextBox1.Lines.Length) // Цикл до тех пор пока не кончились строки в richTextBox1
@@ -113,6 +120,7 @@ namespace LB1
             }
         }
 
+        // Обработчики событий меню
         private void новыйToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fr2.FileN = ""; // Очистка файла
@@ -145,6 +153,13 @@ namespace LB1
             // ProcessDataProcedure();
             // Вызов процедуры сохранитьКак
             SaveAsProcedure(); // сохранитьКак через процедуру
+        }
+
+        private void форма2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Показ формы вычислений
+            Form2 form2 = new Form2();
+            form2.ShowDialog();
         }
     }
 }
